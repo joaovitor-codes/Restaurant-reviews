@@ -3,7 +3,7 @@ package br.com.facol.model;
 import java.util.List;
 
 public class User {
-    private int user_id;
+    private int id;
     private String nome;
     private String email;
     private String senha;
@@ -19,7 +19,7 @@ public class User {
     }
 
     public int getUser_id() {
-        return user_id;
+        return id;
     }
 
     public String getNome() {

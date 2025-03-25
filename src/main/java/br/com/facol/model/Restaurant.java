@@ -1,10 +1,16 @@
 package br.com.facol.model;
 
+import br.com.facol.model.ENUM.Review;
+import static br.com.facol.model.ENUM.Review.BOM;
+import static br.com.facol.model.ENUM.Review.MUITO_BOM;
+
 import java.util.List;
+
+
 
 public class Restaurant {
     private int id;
-    private Enum tag;
+    private Review tag;
     private String nome;
     private String cidade;
     private String bairro;
@@ -68,6 +74,14 @@ public class Restaurant {
         this.email = email;
     }
 
+    public Review getTag() {
+        return tag;
+    }
+
+    public void setTag(Review tag) {
+        this.tag = tag;
+    }
+
     public void getTelefones() {
         for (int i = 0; i < telefones.size(); i++) {
             System.out.println(telefones.get(i));
@@ -83,11 +97,17 @@ public class Restaurant {
         }
     }
 
-    public Enum getTag() {
-        return tag;
-    }
-
-    public void setTag(Enum tag) {
-        this.tag = tag;
+    public void defTag(Restaurant restaurant, double media){
+        try {
+            if (media < 7) {
+                restaurant.tag = Review.RUIM;
+            } else if (media <= 7) {
+                restaurant.tag = Review.BOM;
+            }else if (media > 7 && media < 8) {
+                restaurant.tag = Review.MUITO_BOM;
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
