@@ -1,8 +1,6 @@
 package br.com.facol.model;
 
 import br.com.facol.model.ENUM.Review;
-import static br.com.facol.model.ENUM.Review.BOM;
-import static br.com.facol.model.ENUM.Review.MUITO_BOM;
 
 import java.util.List;
 
