@@ -18,6 +18,10 @@ public class User {
         this.nome = nome;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getUser_id() {
         return id;
     }

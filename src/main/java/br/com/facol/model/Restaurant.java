@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Restaurant {
     private int id;
-    private Review tag;
+    private String CNPJ;
     private String nome;
     private String cidade;
     private String bairro;
@@ -19,13 +19,14 @@ public class Restaurant {
     public Restaurant() {
     }
 
-    public Restaurant(int id, String cep, String email, String bairro, String cidade, String nome) {
+    public Restaurant(int id, String cep, String email, String bairro, String cidade, String nome, String CNPJ) {
         this.id = id;
         this.cep = cep;
         this.email = email;
         this.bairro = bairro;
         this.cidade = cidade;
         this.nome = nome;
+        this.CNPJ = CNPJ;
     }
 
     public String getNome() {
@@ -46,6 +47,10 @@ public class Restaurant {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getBairro() {
@@ -72,38 +77,24 @@ public class Restaurant {
         this.email = email;
     }
 
-    public Review getTag() {
-        return tag;
-    }
-
-    public void setTag(Review tag) {
-        this.tag = tag;
-    }
-
     public void getTelefones() {
         for (int i = 0; i < telefones.size(); i++) {
             System.out.println(telefones.get(i));
         }
     }
 
+    public String getCNPJ() {
+        return CNPJ;
+    }
+
+    public void setCNPJ(String CNPJ) {
+        this.CNPJ = CNPJ;
+    }
+
     public void addTelefone(String telefone) {
         try {
             this.telefones.add(telefone);
             System.out.println("Novo telefone adicionado: " + telefone);
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void defTag(Restaurant restaurant, double media){
-        try {
-            if (media < 7) {
-                restaurant.tag = Review.RUIM;
-            } else if (media <= 7) {
-                restaurant.tag = Review.BOM;
-            }else if (media > 7 && media < 8) {
-                restaurant.tag = Review.MUITO_BOM;
-            }
         }catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,19 +1,20 @@
 package br.com.facol.model;
 
+import br.com.facol.model.ENUM.Review;
+
 public class UserReview {
     private int Review_id;
     private int User_id;
     private int Restaurant_id;
     private String Restaurant_name;
     private String Review_text;
-    private int score;
+    private Review tag;
 
     public UserReview() {
     }
 
-    public UserReview(int review_id, int score, String restaurant_name, int restaurant_id, String review_text, int user_id) {
+    public UserReview(int review_id, String restaurant_name, int restaurant_id, String review_text, int user_id) {
         Review_id = review_id;
-        this.score = score;
         Restaurant_name = restaurant_name;
         Restaurant_id = restaurant_id;
         Review_text = review_text;
@@ -52,11 +53,26 @@ public class UserReview {
         Review_text = review_text;
     }
 
-    public int getScore() {
-        return score;
+    public String getTag() {
+        return tag.toString();
     }
 
-    public void setScore(int score) {
-        this.score = score;
+    public void setTag(Review review) {
+        tag = review;
     }
+
+    public void defReview(double rating, UserReview review) {
+        try{
+            if (rating < 5){
+                review.tag = Review.RUIM;
+            }else if (rating > 5 && rating < 8){
+                review.tag = Review.BOM;
+            }else if (rating >= 8){
+                review.tag = Review.MUITO_BOM;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 }
