@@ -44,6 +44,14 @@ public class User {
         }
     }
 
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
     public void addTelefone(String telefone) {
         try {
             this.telefones.add(telefone);
