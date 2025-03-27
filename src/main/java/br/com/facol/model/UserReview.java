@@ -4,21 +4,20 @@ import br.com.facol.model.ENUM.Review;
 
 public class UserReview {
     private int Review_id;
-    private int User_id;
-    private int Restaurant_id;
-    private String Restaurant_name;
+    private User user;
+    private Restaurant restaurant;
     private String Review_text;
     private Review tag;
 
     public UserReview() {
     }
 
-    public UserReview(int review_id, String restaurant_name, int restaurant_id, String review_text, int user_id) {
+    public UserReview(int review_id, Review tag, String review_text, Restaurant restaurant, User user) {
         Review_id = review_id;
-        Restaurant_name = restaurant_name;
-        Restaurant_id = restaurant_id;
+        this.tag = tag;
         Review_text = review_text;
-        User_id = user_id;
+        this.restaurant = restaurant;
+        this.user = user;
     }
 
     public int getRestaurant_id(Restaurant restaurant) {
@@ -37,14 +36,6 @@ public class UserReview {
         Review_id = review_id;
     }
 
-    public int getUser_id() {
-        return User_id;
-    }
-
-    public void setUser_id(int user_id) {
-        User_id = user_id;
-    }
-
     public String getReview_text() {
         return Review_text;
     }
@@ -59,6 +50,22 @@ public class UserReview {
 
     public void setTag(Review review) {
         tag = review;
+    }
+
+    public int getUserId() {
+        return user.getUser_id();
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public int getRestaurantId() {
+        return restaurant.getId();
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 
     public void defReview(double rating, UserReview review) {
