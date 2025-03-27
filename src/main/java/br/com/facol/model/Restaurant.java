@@ -1,11 +1,5 @@
 package br.com.facol.model;
 
-import br.com.facol.model.ENUM.Review;
-
-import java.util.List;
-
-
-
 public class Restaurant {
     private int id;
     private String CNPJ;
@@ -14,7 +8,6 @@ public class Restaurant {
     private String bairro;
     private String cep;
     private String email;
-    private List<String> telefones;
 
     public Restaurant() {
     }
@@ -77,12 +70,6 @@ public class Restaurant {
         this.email = email;
     }
 
-    public void getTelefones() {
-        for (int i = 0; i < telefones.size(); i++) {
-            System.out.println(telefones.get(i));
-        }
-    }
-
     public String getCNPJ() {
         return CNPJ;
     }
@@ -91,12 +78,4 @@ public class Restaurant {
         this.CNPJ = CNPJ;
     }
 
-    public void addTelefone(String telefone) {
-        try {
-            this.telefones.add(telefone);
-            System.out.println("Novo telefone adicionado: " + telefone);
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }

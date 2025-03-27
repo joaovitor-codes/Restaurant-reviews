@@ -1,13 +1,10 @@
 package br.com.facol.model;
 
-import java.util.List;
-
 public class User {
     private int id;
     private String nome;
     private String email;
     private String senha;
-    private List<String> telefones;
 
     public User() {
     }
@@ -42,12 +39,6 @@ public class User {
         this.email = email;
     }
 
-    public void getTelefones() {
-        for (int i = 0; i < telefones.size(); i++) {
-            System.out.println(telefones.get(i));
-        }
-    }
-
     public String getSenha() {
         return senha;
     }
@@ -56,14 +47,13 @@ public class User {
         this.senha = senha;
     }
 
-    public void addTelefone(String telefone) {
-        try {
-            this.telefones.add(telefone);
-            System.out.println("Novo telefone adicionado: " + telefone);
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", senha='" + senha + '\'' +
+                '}';
     }
-
-
 }
