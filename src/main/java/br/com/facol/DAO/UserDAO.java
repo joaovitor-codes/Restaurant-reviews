@@ -40,6 +40,7 @@ public class UserDAO {
             stmt.setString(1, user.getNome());
             stmt.setString(2, user.getEmail());
             stmt.setString(3, user.getSenha());
+            stmt.setInt(4, id);
             stmt.executeUpdate();
         }catch(SQLException e) {
             System.err.println("Erro ao executar operação: " + e.getMessage());

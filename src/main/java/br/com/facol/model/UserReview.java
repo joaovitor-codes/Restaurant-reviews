@@ -68,6 +68,14 @@ public class UserReview {
         this.restaurant = restaurant;
     }
 
+    public void setRestaurant_id(int restaurant_id) {
+        this.restaurant.setId(restaurant_id);
+    }
+
+    public void setUser_id(int user_id) {
+        this.user.setId(user_id);
+    }
+
     public void defReview(double rating, UserReview review) {
         try{
             if (rating < 5){

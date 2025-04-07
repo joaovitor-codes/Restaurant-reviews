@@ -78,4 +78,17 @@ public class Restaurant {
         this.CNPJ = CNPJ;
     }
 
+    @Override
+    public String toString() {
+        return "Restaurant{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cidade='" + cidade + '\'' +
+                ", bairro='" + bairro + '\'' +
+                ", cep='" + cep + '\'' +
+                ", CNPJ='" + CNPJ + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }
+

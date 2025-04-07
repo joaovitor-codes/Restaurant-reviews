@@ -45,6 +45,7 @@ public class RestaurantDAO {
             stmt.setString(4, restaurant.getCep());
             stmt.setString(5, restaurant.getEmail());
             stmt.setString(6, restaurant.getCNPJ());
+            stmt.setInt(7, id);
             stmt.executeUpdate();
         }catch (SQLException e){
             System.err.println("Erro ao atualizar restaurante: " + e.getMessage());
