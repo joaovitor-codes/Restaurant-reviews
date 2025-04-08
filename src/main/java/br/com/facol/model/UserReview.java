@@ -1,22 +1,20 @@
 package br.com.facol.model;
 
-import br.com.facol.model.ENUM.Review;
-
 public class UserReview {
     private int Review_id;
     private User user;
     private Restaurant restaurant;
     private String Review_text;
-    private Review tag;
+    private double score;
 
     public UserReview() {
     }
 
-    public UserReview(int review_id, Review tag, String review_text, Restaurant restaurant, User user) {
+    public UserReview(int review_id, String review_text, Restaurant restaurant, User user, double score) {
         Review_id = review_id;
-        this.tag = tag;
         Review_text = review_text;
         this.restaurant = restaurant;
+        this.score = score;
         this.user = user;
     }
 
@@ -44,14 +42,6 @@ public class UserReview {
         Review_text = review_text;
     }
 
-    public String getTag() {
-        return tag.toString();
-    }
-
-    public void setTag(Review review) {
-        tag = review;
-    }
-
     public int getUserId() {
         return user.getUser_id();
     }
@@ -69,25 +59,25 @@ public class UserReview {
     }
 
     public void setRestaurant_id(int restaurant_id) {
+        if (this.restaurant == null) {
+            this.restaurant = new Restaurant();
+        }
         this.restaurant.setId(restaurant_id);
     }
 
     public void setUser_id(int user_id) {
+        if (this.user == null) {
+            this.user = new User();
+        }
         this.user.setId(user_id);
     }
 
-    public void defReview(double rating, UserReview review) {
-        try{
-            if (rating < 5){
-                review.tag = Review.RUIM;
-            }else if (rating > 5 && rating < 8){
-                review.tag = Review.BOM;
-            }else if (rating >= 8){
-                review.tag = Review.MUITO_BOM;
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+
+    public double getScore() {
+        return score;
     }
 
+    public void setScore(double score) {
+        this.score = score;
+    }
 }

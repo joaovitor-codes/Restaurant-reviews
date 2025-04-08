@@ -3,6 +3,7 @@ package br.com.facol.controller;
 import br.com.facol.DAO.UserDAO;
 import br.com.facol.model.User;
 import br.com.facol.repository.UserRepository;
+import br.com.facol.containerIoc.appConfig;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.annotation.WebServlet;
@@ -19,7 +20,7 @@ public class UserServlet extends HttpServlet {
 
     @Override
     public void init(){
-        this.userRepository = new UserRepository(new UserDAO());
+        this.userRepository = appConfig.createUserRepository();
     }
 
     @Override

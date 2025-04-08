@@ -1,5 +1,7 @@
 package br.com.facol.util;
 
+import br.com.facol.controller.RestaurantServlet;
+import br.com.facol.controller.UserReviewServlet;
 import br.com.facol.controller.UserServlet;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
@@ -11,7 +13,7 @@ public class JettyServer {
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
         server.setHandler(context);
-        context.addServlet(new ServletHolder(new UserServlet()), "/users");
+        context.addServlet(new ServletHolder(new UserReviewServlet()), "/user-reviews");
         server.start();
         server.join();
     }

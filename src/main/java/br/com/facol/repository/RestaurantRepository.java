@@ -4,6 +4,7 @@ import br.com.facol.model.Restaurant;
 import br.com.facol.DAO.RestaurantDAO;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RestaurantRepository {
     RestaurantDAO restaurantDAO;
@@ -57,6 +58,15 @@ public class RestaurantRepository {
         try {
             return restaurantDAO.findRestaurant(id);
         } catch (Exception e) {
+            System.out.println("Erro ao buscar restaurante: " + e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Restaurant> getTopRatedRestaurants() {
+        try{
+            return restaurantDAO.TopRatedRestaurants();
+        }catch (SQLException e) {
             System.out.println("Erro ao buscar restaurante: " + e.getMessage());
             throw new RuntimeException(e);
         }

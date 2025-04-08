@@ -1,7 +1,10 @@
 package br.com.facol.model;
 
+import br.com.facol.model.ENUM.Review;
+
 public class Restaurant {
     private int id;
+    private Review tag;
     private String CNPJ;
     private String nome;
     private String cidade;
@@ -12,7 +15,7 @@ public class Restaurant {
     public Restaurant() {
     }
 
-    public Restaurant(int id, String cep, String email, String bairro, String cidade, String nome, String CNPJ) {
+    public Restaurant(int id, String cep, String email, String bairro, String cidade, String nome, String CNPJ, Review tag) {
         this.id = id;
         this.cep = cep;
         this.email = email;
@@ -20,6 +23,7 @@ public class Restaurant {
         this.cidade = cidade;
         this.nome = nome;
         this.CNPJ = CNPJ;
+        this.tag = tag;
     }
 
     public String getNome() {
@@ -76,6 +80,14 @@ public class Restaurant {
 
     public void setCNPJ(String CNPJ) {
         this.CNPJ = CNPJ;
+    }
+
+    public String getTag() {
+        return tag.toString();
+    }
+
+    public void setTag(Review tag) {
+        this.tag = tag;
     }
 
     @Override
