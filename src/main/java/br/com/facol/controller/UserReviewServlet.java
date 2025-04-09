@@ -48,15 +48,26 @@ public class UserReviewServlet extends HttpServlet {
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         try {
-            int userReviewId = Integer.parseInt(req.getParameter("id"));
-            userReviewRepository.removeUserReview(userReviewId);
             resp.setContentType("application/json");
-            resp.setStatus(HttpServletResponse.SC_OK);
-            resp.getWriter().write("{\"message\":\"Review removido com sucesso.\"}");
+            String idParam = req.getParameter("id");
+            if (idParam == null || idParam.isEmpty()) {
+                resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                resp.getWriter().write("{\"error\":\"O parâmetro 'id' não pode ser nulo ou vazio.\"}");
+                return;
+            }
+            try {
+                int userReviewId = Integer.parseInt(idParam);
+                userReviewRepository.removeUserReview(userReviewId);
+                resp.setStatus(HttpServletResponse.SC_OK);
+                resp.getWriter().write("{\"message\":\"Review removido com sucesso.\"}");
+            } catch (NumberFormatException e) {
+                resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                resp.getWriter().write("{\"error\":\"O parâmetro 'id' deve ser um número válido.\"}");
+            }
         } catch (Exception e) {
             resp.setContentType("application/json");
             resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            resp.getWriter().write("{\"error\":\"Erro ao remover review: " + e.getMessage() + "\"}");
+            resp.getWriter().write("{\"error\":\"Erro ao remover o review: " + e.getMessage() + "\"}");
         }
     }
 }

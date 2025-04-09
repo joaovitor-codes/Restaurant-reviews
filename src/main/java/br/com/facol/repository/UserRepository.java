@@ -13,9 +13,11 @@ public class UserRepository {
         this.userDAO = userDAO;
     }
 
-    public void insertUser(User user) {
+    public int insertUser(User user) {
         try {
-            userDAO.addUser(user);
+            int generateId = userDAO.addUser(user);
+            user.setId(generateId);
+            return generateId;
         } catch (Exception e) {
             System.out.println("Erro ao inserir usuario: " + e.getMessage());
             throw new RuntimeException(e);

@@ -13,18 +13,18 @@ public class appConfig {
 
     public static RestaurantServiceImpl createRestaurantService() {
         RestaurantDAO restaurantDAO = new RestaurantDAO();
-        RestaurantRepository restaurantRepository = new RestaurantRepository(restaurantDAO);
-        return new RestaurantServiceImpl(restaurantRepository);
+        RestaurantRepository repository = new RestaurantRepository(restaurantDAO);
+        return new RestaurantServiceImpl(repository);
     }
 
     public static UserReviewServiceImpl createUserReviewService() {
         UserReviewDAO userReviewDAO = new UserReviewDAO();
-        UserReviewRepository userReviewRepository = new UserReviewRepository(userReviewDAO);
+        UserReviewRepository userRepository = new UserReviewRepository(userReviewDAO);
 
         RestaurantDAO restaurantDAO = new RestaurantDAO();
         RestaurantRepository restaurantRepository = new RestaurantRepository(restaurantDAO);
 
-        return new UserReviewServiceImpl(restaurantRepository, userReviewRepository);
+        return new UserReviewServiceImpl(restaurantRepository, userRepository);
     }
 
     public static UserRepository createUserRepository() {
@@ -41,6 +41,5 @@ public class appConfig {
         RestaurantDAO restaurantDAO = new RestaurantDAO();
         return new RestaurantRepository(restaurantDAO);
     }
-
 
 }

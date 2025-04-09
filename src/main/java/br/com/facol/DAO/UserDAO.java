@@ -7,7 +7,7 @@ import br.com.facol.util.DatabaseConnection;
 
 
 public class UserDAO {
-    public void addUser(User user ) throws SQLException {
+    public int addUser(User user ) throws SQLException {
         String sql = "INSERT INTO usuario (nome, email, senha) VALUES (?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
         PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);) {
@@ -15,6 +15,13 @@ public class UserDAO {
             stmt.setString(2, user.getEmail());
             stmt.setString(3,user.getSenha());
             stmt.executeUpdate();
+
+            try(ResultSet rs = stmt.getGeneratedKeys()) {
+                if(rs.next()) {
+                    return rs.getInt(1);
+                }
+            }
+            throw new SQLException("falha ao obter id do usuario!");
         }catch(SQLException e) {
             System.err.println("Erro ao executar operação: " + e.getMessage());
             throw e;
