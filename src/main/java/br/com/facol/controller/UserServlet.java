@@ -1,6 +1,5 @@
 package br.com.facol.controller;
 
-import br.com.facol.DAO.UserDAO;
 import br.com.facol.model.User;
 import br.com.facol.repository.UserRepository;
 import br.com.facol.containerIoc.appConfig;

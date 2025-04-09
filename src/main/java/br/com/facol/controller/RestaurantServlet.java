@@ -1,6 +1,5 @@
 package br.com.facol.controller;
 
-import br.com.facol.DAO.RestaurantDAO;
 import br.com.facol.model.Restaurant;
 import br.com.facol.repository.RestaurantRepository;
 import br.com.facol.containerIoc.appConfig;

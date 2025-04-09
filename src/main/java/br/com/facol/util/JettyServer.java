@@ -1,8 +1,6 @@
 package br.com.facol.util;
 
-import br.com.facol.controller.RestaurantServlet;
 import br.com.facol.controller.UserReviewServlet;
-import br.com.facol.controller.UserServlet;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;

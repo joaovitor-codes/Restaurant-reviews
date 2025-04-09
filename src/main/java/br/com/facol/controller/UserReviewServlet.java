@@ -1,6 +1,5 @@
 package br.com.facol.controller;
 
-import br.com.facol.DAO.UserReviewDAO;
 import br.com.facol.model.UserReview;
 import br.com.facol.repository.UserReviewRepository;
 import br.com.facol.containerIoc.appConfig;

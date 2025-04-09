@@ -1,6 +1,5 @@
 package br.com.facol.repository;
 
-import br.com.facol.model.Restaurant;
 import br.com.facol.model.UserReview;
 import br.com.facol.DAO.UserReviewDAO;
 

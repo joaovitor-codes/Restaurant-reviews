@@ -7,20 +7,24 @@ import br.com.facol.repository.RestaurantRepository;
 import br.com.facol.repository.UserRepository;
 import br.com.facol.repository.UserReviewRepository;
 import br.com.facol.service.RestaurantServiceImpl;
+import br.com.facol.service.UserReviewServiceImpl;
 
 public class appConfig {
 
     public static RestaurantServiceImpl createRestaurantService() {
-        // instanciação dos DAO
         RestaurantDAO restaurantDAO = new RestaurantDAO();
-        UserReviewDAO userReviewDAO = new UserReviewDAO();
-
-        // instaciação dos repositorios
         RestaurantRepository restaurantRepository = new RestaurantRepository(restaurantDAO);
+        return new RestaurantServiceImpl(restaurantRepository);
+    }
+
+    public static UserReviewServiceImpl createUserReviewService() {
+        UserReviewDAO userReviewDAO = new UserReviewDAO();
         UserReviewRepository userReviewRepository = new UserReviewRepository(userReviewDAO);
 
-        // retorna nova instancia
-        return new RestaurantServiceImpl(restaurantRepository, userReviewRepository);
+        RestaurantDAO restaurantDAO = new RestaurantDAO();
+        RestaurantRepository restaurantRepository = new RestaurantRepository(restaurantDAO);
+
+        return new UserReviewServiceImpl(restaurantRepository, userReviewRepository);
     }
 
     public static UserRepository createUserRepository() {
@@ -37,4 +41,6 @@ public class appConfig {
         RestaurantDAO restaurantDAO = new RestaurantDAO();
         return new RestaurantRepository(restaurantDAO);
     }
+
+
 }

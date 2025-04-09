@@ -2,20 +2,19 @@ package br.com.facol.model;
 
 public class UserReview {
     private int Review_id;
-    private User user;
-    private Restaurant restaurant;
+    private int user_id;
+    private int restaurant_id;
     private String Review_text;
     private double score;
 
     public UserReview() {
     }
 
-    public UserReview(int review_id, String review_text, Restaurant restaurant, User user, double score) {
-        Review_id = review_id;
+    public UserReview(String review_text, int restaurant_id, int user_id, double score) {
         Review_text = review_text;
-        this.restaurant = restaurant;
+        this.restaurant_id = restaurant_id;
         this.score = score;
-        this.user = user;
+        this.user_id = user_id;
     }
 
     public int getRestaurant_id(Restaurant restaurant) {
@@ -43,33 +42,20 @@ public class UserReview {
     }
 
     public int getUserId() {
-        return user.getUser_id();
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+        return user_id;
     }
 
     public int getRestaurantId() {
-        return restaurant.getId();
+        return restaurant_id;
     }
 
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
-    }
 
     public void setRestaurant_id(int restaurant_id) {
-        if (this.restaurant == null) {
-            this.restaurant = new Restaurant();
-        }
-        this.restaurant.setId(restaurant_id);
+        this.restaurant_id = restaurant_id;
     }
 
     public void setUser_id(int user_id) {
-        if (this.user == null) {
-            this.user = new User();
-        }
-        this.user.setId(user_id);
+        this.user_id = user_id;
     }
 
 

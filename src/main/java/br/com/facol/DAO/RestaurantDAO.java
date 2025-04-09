@@ -112,13 +112,13 @@ public class RestaurantDAO {
     public List<Restaurant> TopRatedRestaurants() throws SQLException {
         String sql = """
             SELECT r.*, 
-                   AVG(ur.score) AS avg_score
-            FROM restaurante r
-            LEFT JOIN user_review ur ON r.id = ur.restaurant_id
+                   COALESCE(AVG(ur.score), 0) AS avg_score
+            FROM restaurante AS r 
+            LEFT JOIN user_review AS ur ON r.id = ur.restaurant_id 
             GROUP BY r.id
-            HAVING AVG(ur.score) >= 8 
             ORDER BY avg_score DESC; 
             """;
+
 
         List<Restaurant> topRestaurants = new ArrayList<>();
         try (Connection conn = DatabaseConnection.getConnection();
@@ -134,7 +134,7 @@ public class RestaurantDAO {
                 restaurant.setCep(rs.getString("cep"));
                 restaurant.setCNPJ(rs.getString("CNPJ"));
                 restaurant.setEmail(rs.getString("email"));
-                restaurant.setTag(Review.MUITO_BOM); // Assume que o filtro no SQL já garantiu a classificação
+                restaurant.setTag(Review.valueOf(rs.getString("tag")));
                 topRestaurants.add(restaurant);
             }
         } catch (SQLException e) {
