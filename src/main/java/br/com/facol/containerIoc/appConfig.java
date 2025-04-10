@@ -19,12 +19,16 @@ public class appConfig {
 
     public static UserReviewServiceImpl createUserReviewService() {
         UserReviewDAO userReviewDAO = new UserReviewDAO();
-        UserReviewRepository userRepository = new UserReviewRepository(userReviewDAO);
+        UserReviewRepository userReviewRepository = new UserReviewRepository(userReviewDAO);
 
         RestaurantDAO restaurantDAO = new RestaurantDAO();
         RestaurantRepository restaurantRepository = new RestaurantRepository(restaurantDAO);
 
-        return new UserReviewServiceImpl(restaurantRepository, userRepository);
+        UserDAO userDAO = new UserDAO();
+        UserRepository userRepository = new UserRepository(userDAO);
+
+
+        return new UserReviewServiceImpl(restaurantRepository, userReviewRepository, userRepository);
     }
 
     public static UserRepository createUserRepository() {

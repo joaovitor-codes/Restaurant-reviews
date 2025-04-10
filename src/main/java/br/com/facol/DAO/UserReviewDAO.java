@@ -97,4 +97,27 @@ public class UserReviewDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public ArrayList<UserReview> findReviewsByRestaurantId(int restaurantId) throws SQLException {
+        String sql = "SELECT * FROM user_review WHERE restaurant_id = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, restaurantId);
+            ResultSet rs = stmt.executeQuery();
+            ArrayList<UserReview> reviews = new ArrayList<>();
+            while (rs.next()) {
+                UserReview review = new UserReview();
+                review.setReview_id(rs.getInt("review_id"));
+                review.setUser_id(rs.getInt("user_id"));
+                review.setRestaurant_id(rs.getInt("restaurant_id"));
+                review.setReview_text(rs.getString("review_text"));
+                review.setScore(rs.getDouble("score"));
+                reviews.add(review);
+            }
+            return reviews;
+        } catch (SQLException e) {
+            System.err.println("Erro ao buscar reviews pelo restaurant_id: " + e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
 }

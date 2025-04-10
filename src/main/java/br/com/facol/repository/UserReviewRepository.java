@@ -67,4 +67,14 @@ public class UserReviewRepository {
             throw new RuntimeException(e);
         }
     }
+
+    // Busca os comentários de um restaurante específico pelo restaurantId
+    public ArrayList<UserReview> getReviewsByRestaurantId(int restaurantId) {
+        try {
+            return userReviewDAO.findReviewsByRestaurantId(restaurantId);
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar reviews pelo restaurant_id: " + e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
 }

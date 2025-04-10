@@ -63,7 +63,7 @@ public class UserDAO {
             ArrayList<User> users = new ArrayList<>();
             while(rs.next()) {
                 User user = new User();
-                user.setId(rs.getInt("id"));
+                user.setId(rs.getInt("user_id"));
                 user.setNome(rs.getString("nome"));
                 user.setEmail(rs.getString("email"));
                 user.setSenha(rs.getString("senha"));
@@ -96,4 +96,5 @@ public class UserDAO {
             throw e;
         }
     }
+
 }
